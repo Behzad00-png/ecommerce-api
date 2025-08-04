@@ -1,0 +1,10 @@
+from fastapi import APIRouter, Depends
+from app.schemas.user import UserOut
+from app.services.user_service import get_all_users
+from app.auth.auth_bearer import JWTBearer
+
+router = APIRouter()
+
+@router.get("/", response_model=list[UserOut], dependencies=[Depends(JWTBearer())])
+def list_users():
+    return get_all_users()
