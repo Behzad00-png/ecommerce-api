@@ -1,0 +1,7 @@
+from fastapi import APIRouter
+
+router = APIRouter()
+
+@router.get("/")
+def list_orders():
+    return [{"id": 1, "product_id": 2, "user_id": 1}]
